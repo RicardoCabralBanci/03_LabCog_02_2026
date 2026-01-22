@@ -1,0 +1,130 @@
+{
+    "meta_info": {
+        "tab_name": "Production"
+    },
+    "columns_definition": [
+        "Safety / Segurança",
+        "Prerequisites / Requisitos",
+        "Preparation / Preparação",
+        "Start / Iniciar",
+        "Monitor / Monitorar",
+        "Stop / Parar",
+        "Jog Mode / Toques",
+        "End / Encerrar",
+        "Switch Off / Desligar",
+        "Changing operating mode",
+        "Switch on conveyor system",
+        "Resuming production",
+        "Switching on the conveyor system",
+        "Requirements"
+    ],
+    "machines": {
+        "CarryStripPacker": {
+            "Safety / Segurança": "5.6.1",
+            "Requirements": "5.6.2",
+            "Preparation / Preparação": "5.6.3",
+            "Start / Iniciar": "5.6.4",
+            "Monitor / Monitorar": "5.6.5",
+            "Stop / Parar": "5.6.6",
+            "Changing operating mode": "5.6.7",
+            "Switch Off / Desligar": "5.6.8"
+        },
+        "Folienrollenhubwagen": {},
+        "Innopack_Packer_EN": {
+            "Safety / Segurança": "5.6.1",
+            "Prerequisites / Requisitos": "5.6.2",
+            "Preparation / Preparação": "5.6.3",
+            "Start / Iniciar": "5.6.4",
+            "Monitor / Monitorar": "5.6.5 | 5.6.7",
+            "Stop / Parar": "5.6.6",
+            "Resuming production": "5.6.8",
+            "End / Encerrar": "5.6.9"
+        },
+        "NatureMultiPacker": {
+            "Safety / Segurança": "5.6.1",
+            "Prerequisites / Requisitos": "5.6.2",
+            "Switching on the conveyor system": "5.6.4",
+            "Stop / Parar": "5.6.7",
+            "End / Encerrar": "5.6.9",
+            "Switch Off / Desligar": "5.6.10 | 5.6.11"
+        },
+        "RS2": {
+            "Safety / Segurança": "5.6.1",
+            "Prerequisites / Requisitos": "5.6.2",
+            "Preparation / Preparação": "5.6.3",
+            "Start / Iniciar": "5.6.4",
+            "Monitor / Monitorar": "5.6.5",
+            "Stop / Parar": "5.6.6",
+            "Jog Mode / Toques": "5.6.7",
+            "End / Encerrar": "5.6.8",
+            "Switch Off / Desligar": "5.6.9"
+        },
+        "ShrinkPacker": {
+            "Safety / Segurança": "5.6.1",
+            "Prerequisites / Requisitos": "5.6.2",
+            "Preparation / Preparação": "5.6.3",
+            "Start / Iniciar": "5.6.4",
+            "Monitor / Monitorar": "5.6.5",
+            "Stop / Parar": "5.6.6",
+            "Jog Mode / Toques": "5.6.7",
+            "End / Encerrar": "5.6.8",
+            "Switch Off / Desligar": "5.6.9"
+        },
+        "TrayPacker": {
+            "Safety / Segurança": "5.6.1",
+            "Requirements": "5.6.2",
+            "Preparation / Preparação": "5.6.3",
+            "Start / Iniciar": "5.6.4",
+            "Monitor / Monitorar": "5.6.5",
+            "Stop / Parar": "5.6.6",
+            "Jog Mode / Toques": "5.6.7",
+            "End / Encerrar": "5.6.8",
+            "Switch Off / Desligar": "5.6.9"
+        },
+        "TrayShrinkPacker": {
+            "Safety / Segurança": "5.6.1",
+            "Requirements": "5.6.2",
+            "Preparation / Preparação": "5.6.3",
+            "Start / Iniciar": "5.6.4",
+            "Monitor / Monitorar": "5.6.5",
+            "Stop / Parar": "5.6.6",
+            "Jog Mode / Toques": "5.6.7",
+            "End / Encerrar": "5.6.8",
+            "Switch Off / Desligar": "5.6.9"
+        },
+        "WraparoundPacker": {
+            "Safety / Segurança": "5.6.1",
+            "Prerequisites / Requisitos": "5.6.2",
+            "Preparation / Preparação": "5.6.3",
+            "Switch on conveyor system": "5.6.4",
+            "Start / Iniciar": "5.6.5",
+            "Monitor / Monitorar": "5.6.6",
+            "Stop / Parar": "5.6.7",
+            "Jog Mode / Toques": "5.6.8",
+            "End / Encerrar": "5.6.9",
+            "Switch Off / Desligar": "5.6.10 | 5.6.11"
+        },
+        "WraparoundShrinkPacker": {
+            "Safety / Segurança": "5.6.1",
+            "Requirements": "5.6.2",
+            "Preparation / Preparação": "5.6.3",
+            "Switch on conveyor system": "5.6.4",
+            "Start / Iniciar": "5.6.5",
+            "Monitor / Monitorar": "5.6.6",
+            "Stop / Parar": "5.6.7",
+            "Jog Mode / Toques": "5.6.8",
+            "End / Encerrar": "5.6.9",
+            "Switch Off / Desligar": "5.6.10 | 5.6.11"
+        },
+        "Zufuhrband": {
+            "Safety / Segurança": "5.5.1",
+            "Prerequisites / Requisitos": "5.5.2",
+            "Preparation / Preparação": "5.5.3",
+            "Start / Iniciar": "5.5.4",
+            "Monitor / Monitorar": "5.5.5",
+            "Stop / Parar": "5.5.6",
+            "End / Encerrar": "5.5.7",
+            "Switch Off / Desligar": "5.5.8"
+        }
+    }
+}

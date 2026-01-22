@@ -1,0 +1,17 @@
+INP - Interruptor principal
+UPS - Fonte de alimentação ininterrupta
+INR - Interruptor de reparo
+SH - Sala higiênica
+ALP - Alavanca principal
+
+
+
+
+
+
+
+
+
+
+
+

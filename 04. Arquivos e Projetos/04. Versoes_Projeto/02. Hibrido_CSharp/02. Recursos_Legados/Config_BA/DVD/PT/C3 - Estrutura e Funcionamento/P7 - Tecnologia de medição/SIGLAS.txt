@@ -1,0 +1,15 @@
+INP - Interruptor principal
+UPS - Interruptor para nobreak
+ALP - Alavanca principal
+
+
+
+
+
+
+
+
+
+
+
+

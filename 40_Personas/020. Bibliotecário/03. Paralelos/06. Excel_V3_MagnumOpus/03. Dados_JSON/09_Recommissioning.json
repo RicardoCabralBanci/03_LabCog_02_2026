@@ -1,0 +1,23 @@
+{
+    "meta_info": {
+        "tab_name": "Recommissioning"
+    },
+    "columns_definition": [
+        "Procedure"
+    ],
+    "machines": {
+        "CarryStripPacker": {},
+        "Folienrollenhubwagen": {},
+        "Innopack_Packer_EN": {
+            "(Main Section)": "5.9"
+        },
+        "NatureMultiPacker": {},
+        "RS2": {},
+        "ShrinkPacker": {},
+        "TrayPacker": {},
+        "TrayShrinkPacker": {},
+        "WraparoundPacker": {},
+        "WraparoundShrinkPacker": {},
+        "Zufuhrband": {}
+    }
+}

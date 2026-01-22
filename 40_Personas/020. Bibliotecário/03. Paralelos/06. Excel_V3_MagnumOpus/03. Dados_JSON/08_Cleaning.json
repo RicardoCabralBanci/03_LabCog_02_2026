@@ -1,0 +1,34 @@
+{
+    "meta_info": {
+        "tab_name": "Cleaning"
+    },
+    "columns_definition": [
+        "Instructions / Instruções",
+        "Execution / Execução",
+        "Specifications",
+        "Prerequisites Preparing the machine",
+        "Preparation"
+    ],
+    "machines": {
+        "CarryStripPacker": {},
+        "Folienrollenhubwagen": {},
+        "Innopack_Packer_EN": {
+            "Instructions / Instruções": "5.7.1",
+            "Specifications": "5.7.2",
+            "Preparation": "5.7.3",
+            "Execution / Execução": "5.7.4"
+        },
+        "NatureMultiPacker": {
+            "Instructions / Instruções": "5.7.1",
+            "Prerequisites Preparing the machine": "5.7.2",
+            "Execution / Execução": "5.7.3"
+        },
+        "RS2": {},
+        "ShrinkPacker": {},
+        "TrayPacker": {},
+        "TrayShrinkPacker": {},
+        "WraparoundPacker": {},
+        "WraparoundShrinkPacker": {},
+        "Zufuhrband": {}
+    }
+}

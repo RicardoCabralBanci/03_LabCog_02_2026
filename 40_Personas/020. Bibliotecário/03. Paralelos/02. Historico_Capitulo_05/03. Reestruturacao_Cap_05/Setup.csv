@@ -1,0 +1,11 @@
+Componente,ShrinkPacker (PT),TrayPacker (EN),Wraparound (EN),NatureMulti (EN),Packer_EN (EN)
+Título do Módulo,5.10 Setup,5.7 Setup,5.8 Setup,5.8 Setup,5.8 Setup
+Geral/Tablet,5.10.5 Setup c/ tablet,5.7.5 Setup w/ tablet,5.8.3 Setup w/ tablet,(Implícito),5.8.3 Dimensions
+M01 Product Feed,5.10.9 M01 Alimentação,5.7.9 M01 Product Feed,5.8.7 (Via M02),--,5.8.6 Setting up components
+M02 Formatting,5.10.10 M02 Formatar,5.7.10 M02 Formatting,5.8.7 M02 Formatting,--,--
+M03 Folding,--,5.7.12 M03 Folding,5.8.9 M03 Folding,--,--
+M04 Wrapping,5.10.11 M04 Aplicar,5.7.13 M04 Wrapping,5.8.11 M04 Wrapping,--,--
+M05 Turning,--,--,5.8.10 M05 Turning,--,--
+M07 Shrinking,5.10.12 M07 Encolher,5.7.14 M07 Heat shrink,5.8.12 M07 Heat shrink,--,--
+M09 Blank Feed,--,5.7.11 M09 Blank Feed,5.8.8 M09 Blank Feed,--,--
+Format Parts,--,--,--,--,5.8.5 Setting up format parts

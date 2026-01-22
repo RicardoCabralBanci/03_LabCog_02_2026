@@ -1,0 +1,9 @@
+Componente,ShrinkPacker (PT),TrayPacker (EN),Wraparound (EN),NatureMulti (EN),Packer_EN (EN)
+Título do Módulo,5.6 Produção,5.6 Production,5.7 Production,5.7 Production,5.6 Production
+Iniciar,5.6.2 Iniciar,5.6.3 Starting,5.7.4 Starting,5.7.4 Starting,5.6.4 Starting
+Monitorar,5.6.3 Monitorar,5.6.4 Monitoring,5.7.5 Monitoring,5.7.5 Monitoring,5.6.5 Monitoring
+Trocar Material,5.6.4 Substituir rolo,5.6.5 Changing film reel,5.7.5 (Implicit),--,--
+Parar,5.7 Parar,5.6.6 Stopping,5.7.6 Stopping,5.7.6 Stopping,5.6.6 Stopping
+Modo Jog,5.8 Modo toques,5.6.7 Jog mode,5.7.7 Jog mode,5.7.7 Jog mode,--
+Encerrar/Esvaziar,5.9 Encerrar,5.6.8 Terminating,5.7.8 Ending,--,5.6.8 Ending
+Desligar,5.9 Desligar,5.6.9 Switching off,5.7.8 Switching off,--,5.9 Taking out...

@@ -1,0 +1,68 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.venv
+venv/
+ENV/
+
+# --- Node.js ---
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# --- Visual Studio & C# ---
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# --- Obsidian (Personal Configs) ---
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.trash/
+
+# --- OS & System ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Temporary & Logs ---
+*.log
+*.tmp
+*.bak
+*.swp
+temp_*.txt
+*.chk
+
+# --- Project Specific Ignored ---
+# Ignore the specific git test folder's internal git if it causes conflicts (optional, but safer to treat as submodule or just ignore its .git if we want a monorepo structure, but usually git ignores nested .git automatically. We will ignore the test folder's build artifacts if any)
+50. Git Test/.git

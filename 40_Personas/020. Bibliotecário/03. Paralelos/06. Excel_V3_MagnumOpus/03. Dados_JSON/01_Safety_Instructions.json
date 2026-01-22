@@ -1,0 +1,56 @@
+{
+    "meta_info": {
+        "tab_name": "Safety Instructions",
+        "description": "Seção dedicada aos avisos de segurança gerais (Nível 1)."
+    },
+    "columns_definition": [
+        "Safety Instructions (Ref)",
+        "Original Title"
+    ],
+    "machines": {
+        "CarryStripPacker": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Safety instructions"
+        },
+        "Folienrollenhubwagen": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Avisos de segurança"
+        },
+        "Innopack_Packer_EN": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Safety instructions"
+        },
+        "NatureMultiPacker": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Safety instructions"
+        },
+        "RS2": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Avisos de segurança"
+        },
+        "ShrinkPacker": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Avisos de segurança"
+        },
+        "TrayPacker": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Safety instructions"
+        },
+        "TrayShrinkPacker": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Safety instructions"
+        },
+        "WraparoundPacker": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Safety instructions"
+        },
+        "WraparoundShrinkPacker": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Safety instructions"
+        },
+        "Zufuhrband": {
+            "Safety Instructions (Ref)": "5.1",
+            "Original Title": "Safety instructions"
+        }
+    }
+}

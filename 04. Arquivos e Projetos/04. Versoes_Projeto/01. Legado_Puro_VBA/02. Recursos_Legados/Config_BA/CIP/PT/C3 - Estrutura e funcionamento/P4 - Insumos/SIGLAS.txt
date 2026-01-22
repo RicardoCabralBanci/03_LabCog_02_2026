@@ -1,0 +1,21 @@
+AR - Agua Recuperada
+AF - Agua Fresca
+AQ - Agua Quente
+ACD - Acido
+SS - Solução Sanitizante
+SOD - Soda
+
+
+**As variações do mesmo fluido são identificadas com numero sequencias apos a sigla. ex: ACD1 - Acido tipo 1 / ACD2 - Acido tipo 2**
+
+
+
+
+
+
+
+
+
+
+
+

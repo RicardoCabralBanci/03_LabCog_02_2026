@@ -1,0 +1,15 @@
+INP - Interruptor principal/Chave geral
+UPS - Interruptor para nobreak
+ET - Energia térmica
+
+
+
+
+
+
+
+
+
+
+
+

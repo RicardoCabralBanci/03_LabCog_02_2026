@@ -1,0 +1,11 @@
+Componente,ShrinkPacker (PT),TrayPacker (EN),Wraparound (EN),NatureMulti (EN),Packer_EN (EN)
+Avisos Gerais,"(Intro: Perigo/Atenção)","(Intro: Danger/Warning)","(Intro: Danger/Warning)","(Intro: Danger/Warning)","(Intro: Danger/Warning)"
+Risco de Materiais Cadentes,--,--,--,--,"DANGER! Falling materials"
+Cargas Suspensas,--,--,--,--,"DANGER! Suspended loads"
+Pressão Pneumática,--,--,--,--,"WARNING! Impermissible pressure"
+Energia Residual,"ATENÇÃO! Energias residuais...","WARNING! Residual energy...","WARNING! Residual energy...","WARNING! Residual energy...","WARNING! Residual energy..."
+Risco de Queimaduras (Cola),--,"WARNING! Risk of burns (Hot-melt)","WARNING! Risk of burns (Hot-melt)","WARNING! Risk of burns (Pre-melting)","--"
+Risco Eletrostático (Filme),"ATENÇÃO! Descarga eletrostática...","WARNING! Electrostatic charge...","WARNING! Electrostatic charge...","WARNING! Electrostatic charge...","--"
+Movimento Inesperado,--,--,--,"WARNING! Improper unlocking...","WARNING! Accidental starting..."
+Detergentes Agressivos,--,--,--,--,"WARNING! Aggressive detergents"
+Poluição Ambiental,--,--,--,--,"WARNING! Environmental pollution"
