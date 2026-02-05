@@ -1,0 +1,40 @@
+# 🏭 Gerador Automático de Manuais 2.0 (G.A.M. v2)
+
+> **Status**: 🚧 `EM CONSTRUÇÃO` | **Arquiteto**: Mestre em VBA
+> **Missão**: Industrializar a criação de documentos com uma estrutura plana e organizada.
+
+---
+
+## 🏗️ Arquitetura do Projeto
+
+*   **[[00. Organization|📂 00. Organization]]** (A Bússola): Camada de Organização Lógica (Dashboard).
+	*   **Regra de Ouro**: Contém apenas arquivos de **Índice** (CENTRAL, Diário de Bordo, Soltos). É proibido conteúdo denso aqui.
+*   **[[01. Core|📂 01. Core]]** (O Lago de Pensamento): Armazenamento Físico de ativos intelectuais e decisões.
+	*   **RESTRITO**: Apenas arquivos `.md` em **ESTRUTURA PLANA** (sem subpastas).
+	*   **Tags Obrigatórias (YAML)**: `PLAN`, `IDEIA`, `SPEC`, `DOC`, `LOG`, `TEMPLATE`, `CODE` (outras sob consulta ao usuário).
+*   **[[02. Tools|📂 02. Tools]]** (A Oficina): Onde vivem os arquivos funcionais ou dados brutos.
+	*   **Regra**: Se o arquivo "roda" ou é dado bruto (`.py`, `.cs`, `.xml`, `.json`), ele mora aqui.
+
+---
+
+## 🤖 Protocolo de Operação (Instruções para a IA)
+
+Para garantir que a inteligência não se transforme em entropia, siga estas ordens:
+
+1.  **Ritual de Inicialização (OBRIGATÓRIO)**:
+	1.  Consulte o último Log no [[00. Organization/05. Diario_de_Bordo.md|05. Diário de Bordo]] para situar o contexto.
+	2.  **CRIE IMEDIATAMENTE** o novo Log da sessão (`NN. Log_Sessao_...`) no `01. Core` usando o [[01. Core/04. LogTemplate.md|04. LogTemplate.md]] e seguindo as suas orientações.
+	3.  Registre a nova entrada no índice do [[00. Organization/05. Diario_de_Bordo.md|05. Diário de Bordo]].
+	4.  **SOMENTE APÓS O REGISTRO**, inicie a análise técnica ou escrita de código.
+2.  **Higiene Estrita**: Não aceite subpastas no `01. Core`. Recuse educadamente e sugira a nomenclatura flat.
+3.  **Links Legíveis**: Sempre use aliases em links internos para melhorar a leitura.
+    *   **Sintaxe Real**: Use `[[Caminho/Arquivo.md|Texto do Link]]` (sem as crases no arquivo final).
+4.  **Protocolo de Contenção (Firewall)**: 
+    *   **Proibição de Leitura Profunda**: Você **NÃO** deve ler o conteúdo interno de logs passados (`01. Core/LOG_...`) ou arquivos fora deste diretório, a menos que o usuário solicite explicitamente.
+    *   **Permissão de Superfície**: Você deve consultar apenas o [[00. Organization/05. Diario_de_Bordo.md|05. Diário de Bordo]] (índice) para entender a linha do tempo.
+    *   **Motivo**: Evitar "alucinações de contexto".
+
+---
+*Assinado,*
+**Mestre em VBA**
+*"A ordem foi estabelecida."*
