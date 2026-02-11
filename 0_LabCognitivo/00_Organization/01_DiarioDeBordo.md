@@ -14,6 +14,7 @@ Registro cronológico das sessões de trabalho. Cada entrada documenta o que foi
 
 ## Histórico de Entradas
 
+*   **2026-02-11 — Obsidian CLI/API e Reorganização de Repos**: [[24_LogSessao2026-02-11|Log da sessão]]. Clonagem do repo GitHub `03_LabCog_02_2026`. Renomeação de pasta local para `03_Projetos_KHS`. Exploração e testes do Obsidian CLI/REST API. Descoberta que v1.12 requer Catalyst. REST API funcionando perfeitamente. Criação de [[22_IdeiaObsidianCLI|Ideia Obsidian CLI]] e [[23_TesteAPICLI|nota de teste via API]].
 *   **2026-02-10 — Índices Ativos e Reorganização**: [[19_LogSessao2026-02-10|Log da sessão]]. Retomada da discussão sobre Índices Ativos (15_, 16_, 17_). Definição de próximos passos de implementação.
 *   **2026-02-09b — Redesign dos Indices**: [[14_LogSessao2026-02-09b|Log da sessão]]. Analise dos problemas com indices manuais. Proposta de Indices Ativos (Tags como Pastas). Criacao do indice `05_EstruturaLabCog`.
 *   **2026-02-09 — Setup Repositorio GitHub**: [[09_LogSessao2026-02-09|Log da sessão]]. Clone do repo `03_LabCog_02_2026`. Migração do `0_LabCognitivo/` para o repositório Git.

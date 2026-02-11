@@ -18,6 +18,8 @@
 - [[20_IdeiaAgenteTagger|Ideia: Agente Especializado em Classificação de Tags]]
   - [[21_ObservacoesAgenteTagger|Caderno de Observações (exercício manual)]]
 
+- [[22_IdeiaObsidianCLI|Ideia: Integração do Obsidian CLI no Projeto]]
+
 ## Ideias em Incubação
 *(ideias registradas mas ainda sem desenvolvimento)*
 
