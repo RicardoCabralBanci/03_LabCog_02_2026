@@ -1,0 +1,56 @@
+# mod_Shared_Definitions
+
+> Codigo VBA atual -- convertido automaticamente de `mod_Shared_Definitions.bas`
+
+```vba
+Attribute VB_Name = "mod_Shared_Definitions"
+Option Explicit
+
+' ==============================================================================
+' M�DULO COMPARTILHADO: DEFINI��ES E CONSTANTES GLOBAIS
+' ==============================================================================
+
+' --- PALETA INDUSTRIAL V3.5 (Global) ---
+Public Const CLR_HEADER_BG As Long = 3947580     ' RGB(60,60,60)
+Public Const CLR_SIDEBAR_BG As Long = 2960685    ' RGB(45,45,45)
+Public Const CLR_ZONE_BG As Long = 13158600      ' RGB(200,200,200)
+
+Public Const CLR_BTN_ACTIVE As Long = 5263440    ' RGB(80,80,80)
+Public Const CLR_BTN_INACTIVE As Long = 13816530 ' RGB(210,210,210)
+Public Const CLR_CARD_BG As Long = 16119285      ' RGB(245,245,245)
+
+Public Const CLR_TEXT_WHITE As Long = 16777215
+Public Const CLR_TEXT_DARK As Long = 3289650
+Public Const CLR_TEXT_GREY As Long = 8421504
+
+' --- STATUS COLORS (Zona B) ---
+Public Const CLR_STATUS_OK As Long = 4684860     ' Verde/Azul KHS
+Public Const CLR_STATUS_ERR As Long = 3355443    ' Vermelho Escuro/Cinza
+Public Const CLR_ICON_WORD As Long = 15773696    ' Azul Word
+
+' --- BRAND COLORS ---
+Public Const CLR_BRAND_KHS As Long = 9863790
+Public Const CLR_BRAND_SIE As Long = 12411904
+Public Const CLR_BRAND_ROC As Long = 46116
+
+' --- ESTRUTURA DE DADOS: CARD IHM ---
+Public Type T_Card_Master
+    id As Long
+    Fabricante As String
+    Modelo As String
+    Tamanho As String
+    Engine As String
+    imgPath As String
+    Status As String        ' Ex: "Ativo", "Legado"
+    Descricao As String     ' Descri��o longa para Zona B
+End Type
+
+' --- ESTRUTURA DE DADOS: DOCUMENTOS (Zona B) ---
+Public Type T_Doc_Item
+    Capitulo As String      ' Ex: "01. Interface"
+    NomeArquivo As String   ' Ex: "CL30_Interface.docx"
+    PathCompleto As String  ' Caminho absoluto
+    Existe As Boolean       ' Flag de valida��o
+End Type
+
+```

@@ -1,0 +1,209 @@
+# Ribbon
+
+> Codigo VBA atual -- convertido automaticamente de `Ribbon.bas`
+
+```vba
+Attribute VB_Name = "Ribbon"
+Option Explicit
+
+' =========================================================================================
+' M�DULO: RibbonCallbacks
+' DESCRI��O: Controla as a��es dos bot�es do Ribbon personalizado (CustomUI).
+' ATUALIZA��O: Mapeamento IHM Expansion (PLT, DPL, PCK, DPK) - CORRE��O DE IDs
+' =========================================================================================
+
+' -----------------------------------------------------------------------------------------
+' 1. UTILIT�RIOS E NAVEGA��O GERAL
+' -----------------------------------------------------------------------------------------
+' ... (Mantido igual) ...
+Sub limpeza(ByRef i As Integer, Optional byDummy As Byte)
+    Application.ScreenUpdating = False
+    With ThisWorkbook.Sheets(i)
+        .Unprotect vbNullString
+        ' ... l�gica de clear contents ...
+        .Protect vbNullString
+    End With
+    Application.ScreenUpdating = True
+End Sub
+
+Sub GoSave(control As IRibbonControl)
+    On Error GoTo message
+    ThisWorkbook.Save
+    Exit Sub
+message:
+    MsgBox "Ainda n�o foi salvo pela primeira vez, use a aba fixa 'Arquivo'", vbCritical
+End Sub
+
+Sub Inform(control As IRibbonControl): Info.Show: End Sub
+Sub GoCode(control As IRibbonControl): Application.VBE.MainWindow.Visible = True: End Sub
+Sub GoAjuda(control As IRibbonControl): MsgBox "Contate a documenta��o.", vbExclamation: End Sub
+
+' -----------------------------------------------------------------------------------------
+' 2. M�QUINAS LEGADO (GTR, DVD, PET, CIP, CMX, CCMX)
+' -----------------------------------------------------------------------------------------
+' IDs 1 a 7 - Mantidos conforme original
+Sub Mec1(control As IRibbonControl): Planilha5.Activate: End Sub
+Sub El1(control As IRibbonControl): Planilha8.Activate: End Sub
+Sub IHM1(control As IRibbonControl): Planilha12.Activate: End Sub
+Sub Ger1(control As IRibbonControl): Call btr.Manual: End Sub
+
+Sub Mec3(control As IRibbonControl): Planilha21.Activate: End Sub
+Sub El3(control As IRibbonControl): Planilha24.Activate: End Sub
+Sub Ger3(control As IRibbonControl): Call dvd.Manual: End Sub
+
+Sub Mec4(control As IRibbonControl): Planilha26.Activate: End Sub
+Sub El4(control As IRibbonControl): Planilha28.Activate: End Sub
+Sub Ger4(control As IRibbonControl): Call pet.Manual: End Sub
+
+Sub Mec5(control As IRibbonControl): Planilha291.Activate: End Sub
+Sub El5(control As IRibbonControl): Planilha33.Activate: End Sub
+Sub Ger5(control As IRibbonControl): Call cip.Manual: End Sub
+
+Sub Mec6(control As IRibbonControl): Planilha35.Activate: End Sub
+Sub El6(control As IRibbonControl): Planilha37.Activate: End Sub
+Sub Ger6(control As IRibbonControl): Call cmx.Manual: End Sub
+
+Sub Mec7(control As IRibbonControl): Planilha38.Activate: End Sub
+Sub El7(control As IRibbonControl): Planilha41.Activate: End Sub
+Sub Ger7(control As IRibbonControl): Call ccmx.Manual: End Sub
+
+
+' -----------------------------------------------------------------------------------------
+' 3. NOVAS M�QUINAS (IHM EXPANSION) - ORDEM CORRIGIDA
+' -----------------------------------------------------------------------------------------
+
+' =========================================================================================
+' 8. PALETIZADOR (PLT)
+' Planilhas: 43(Est), 46(El), 53(IHM)
+' =========================================================================================
+
+Sub Mec8(control As IRibbonControl) ' PLT Estrutura
+    On Error Resume Next
+    Planilha43.Activate
+End Sub
+
+Sub El8(control As IRibbonControl) ' PLT El�trica
+    On Error Resume Next
+    Planilha46.Activate
+End Sub
+
+Sub IHM8(control As IRibbonControl) ' PLT IHM
+    On Error Resume Next
+    Planilha53.Activate
+End Sub
+
+Sub Ex8(control As IRibbonControl) ' PLT
+    Planilha2.Cells(20, 2).Value = Planilha2.Cells(20, 1).Value
+    Planilha2.Cells(20, 1).Value = "PLT"
+    Exce��es.Show
+End Sub
+
+Sub Ger8(control As IRibbonControl) ' Gerar PLT
+    If MsgBox("Gerar manual do Paletizador?", vbQuestion + vbYesNo) = vbYes Then
+        Call mod_NewEngine_V5.Gerar_PLT
+    End If
+End Sub
+
+
+' =========================================================================================
+' 9. DESPALETIZADOR (DPL) - ANTES ACHAVA QUE ERA PCK
+' Planilhas: 48(Est), 51(El), 54(IHM)
+' =========================================================================================
+
+Sub Mec9(control As IRibbonControl) ' DPL Estrutura
+    On Error Resume Next
+    Planilha48.Activate
+End Sub
+
+Sub El9(control As IRibbonControl) ' DPL El�trica
+    On Error Resume Next
+    Planilha51.Activate
+End Sub
+
+Sub IHM9(control As IRibbonControl) ' DPL IHM
+    On Error Resume Next
+    Planilha54.Activate
+End Sub
+
+Sub Ex9(control As IRibbonControl) ' DPL
+    Planilha2.Cells(20, 2).Value = Planilha2.Cells(20, 1).Value
+    Planilha2.Cells(20, 1).Value = "DPL"
+    Exce��es.Show
+End Sub
+
+Sub Ger9(control As IRibbonControl) ' Gerar DPL
+    If MsgBox("Gerar manual do Despaletizador?", vbQuestion + vbYesNo) = vbYes Then
+        ' Call mod_NewEngine_V5.Gerar_DPL
+        MsgBox "Fun��o Gerar_DPL pendente na Engine.", vbExclamation
+    End If
+End Sub
+
+
+' =========================================================================================
+' 10. ENCAIXOTADORA (PCK) - ANTES ACHAVA QUE ERA DPL
+' Planilhas: 52(Est), 58(El), 55(IHM)
+' =========================================================================================
+
+Sub Mec10(control As IRibbonControl) ' PCK Estrutura
+    On Error Resume Next
+    Planilha52.Activate
+End Sub
+
+Sub El10(control As IRibbonControl) ' PCK El�trica
+    On Error Resume Next
+    Planilha58.Activate
+End Sub
+
+Sub IHM10(control As IRibbonControl) ' PCK IHM
+    On Error Resume Next
+    Planilha55.Activate
+End Sub
+
+Sub Ex10(control As IRibbonControl) ' PCK
+    Planilha2.Cells(20, 2).Value = Planilha2.Cells(20, 1).Value
+    Planilha2.Cells(20, 1).Value = "PCK"
+    Exce��es.Show
+End Sub
+
+Sub Ger10(control As IRibbonControl) ' Gerar PCK
+    If MsgBox("Gerar manual da Encaixotadora?", vbQuestion + vbYesNo) = vbYes Then
+        Call mod_NewEngine_V5.Gerar_PCK
+    End If
+End Sub
+
+
+' =========================================================================================
+' 11. DESENCAIXOTADORA (DPK)
+' Planilhas: 59(Est), 61(El), 56(IHM)
+' =========================================================================================
+
+Sub Mec11(control As IRibbonControl) ' DPK Estrutura
+    On Error Resume Next
+    Planilha59.Activate
+End Sub
+
+Sub El11(control As IRibbonControl) ' DPK El�trica
+    On Error Resume Next
+    Planilha61.Activate
+End Sub
+
+Sub IHM11(control As IRibbonControl) ' DPK IHM
+    On Error Resume Next
+    Planilha56.Activate
+End Sub
+
+Sub Ex11(control As IRibbonControl) ' DPK
+    Planilha2.Cells(20, 2).Value = Planilha2.Cells(20, 1).Value
+    Planilha2.Cells(20, 1).Value = "DPK"
+    Exce��es.Show
+End Sub
+
+Sub Ger11(control As IRibbonControl) ' Gerar DPK
+    If MsgBox("Gerar manual da Desencaixotadora?", vbQuestion + vbYesNo) = vbYes Then
+        ' Call mod_NewEngine_V5.Gerar_DPK
+        MsgBox "Fun��o Gerar_DPK pendente na Engine.", vbExclamation
+    End If
+End Sub
+
+
+```
