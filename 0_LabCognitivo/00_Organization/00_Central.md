@@ -15,6 +15,9 @@ Histórico de sessões, evolução do projeto e contexto para novas sessões.
 ### [[03_Ferramentas|Ferramentas]]
 Índice das ferramentas disponíveis em `02_Tools/`.
 
+### [[04_DesenvolvimentoDeIdeias|Desenvolvimento de Ideias]]
+Acompanhamento de ideias em evolução — da faísca até a implementação.
+
 ---
 
 ## Estrutura
