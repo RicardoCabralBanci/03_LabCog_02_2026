@@ -1,0 +1,10 @@
+# Ignora TUDO por padrão
+*
+
+# Exceto estas pastas e arquivos
+!0_LabCognitivo/
+!0_LabCognitivo/**
+!88_Legado/
+!88_Legado/**
+!CLAUDE.md
+!.gitignore
