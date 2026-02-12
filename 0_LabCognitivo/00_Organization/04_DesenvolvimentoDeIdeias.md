@@ -20,6 +20,16 @@
 
 - [[22_IdeiaObsidianCLI|Ideia: Integração do Obsidian CLI no Projeto]]
 
+- **Explorar github.com/jeffpierce/memory-palace** — Repositorio de gestao de conhecimento. Avaliar relevancia para o LabCog.
+
+- **OpenClaw em Docker** — Pesquisar o que e OpenClaw e se faz sentido rodar em container Docker.
+
+- **SOUL.md para o Claude** — Criar um arquivo de identidade/personalidade para o assistente IA do projeto.
+
+- **Consumo de tokens na abertura** — Investigar porque o Claude Code gasta muitos tokens ao iniciar sessao. Protocolo de sessao? Arquivo de memoria?
+
+- **MCP com Excalidraw** — Criar um MCP server para integrar o Excalidraw ao Claude Code. Possibilitar criacao/edicao de diagramas e visualizacoes.
+
 ## Ideias em Incubação
 *(ideias registradas mas ainda sem desenvolvimento)*
 
