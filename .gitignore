@@ -1,83 +1,10 @@
-# ============================================
-# Estratégia: Ignorar TUDO exceto pastas sincronizadas
-# ============================================
+# Ignora TUDO por padrão
+*
 
-# Ignorar TUDO na raiz
-/*
-
-# ============================================
-# Exceções: Arquivos e pastas sincronizadas
-# ============================================
-
-# Arquivos de configuração
-!/.gitignore
-!/CLAUDE.md
-!/.gitmodules
-
-# Pastas principais sincronizadas
-!/0_LabCognitivo/
-!/88_Legado/
-!/skills/
-
-# ============================================
-# Configurações Obsidian (seletivas)
-# ============================================
-!/.obsidian/
-# Ignorar tudo dentro de .obsidian/ por padrão
-/.obsidian/*
-# Exceto arquivos essenciais
-!/.obsidian/app.json
-!/.obsidian/appearance.json
-!/.obsidian/community-plugins.json
-!/.obsidian/core-plugins.json
-!/.obsidian/core-plugins-migration.json
-!/.obsidian/hotkeys.json
-
-# ============================================
-# Padrões globais (aplicam em todas as pastas)
-# ============================================
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-dist/
-*.egg-info/
-.env
-.venv
-venv/
-ENV/
-
-# Node.js
-node_modules/
-npm-debug.log
-yarn-error.log
-package-lock.json
-
-# Visual Studio & C#
-.vs/
-bin/
-obj/
-*.user
-*.suo
-
-# OS & System
-.DS_Store
-Thumbs.db
-Desktop.ini
-$RECYCLE_BIN/
-
-# Temporary & Logs
-*.log
-*.tmp
-*.bak
-*.swp
-temp_*.txt
-
-# Obsidian temporários
-.trash/
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
+# Exceto estas pastas e arquivos
+!0_LabCognitivo/
+!0_LabCognitivo/**
+!88_Legado/
+!88_Legado/**
+!CLAUDE.md
+!.gitignore

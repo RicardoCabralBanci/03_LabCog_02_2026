@@ -1,66 +1,58 @@
-# LabCog -- LabCogKHS_CLI
+## Projeto
 
-> Vault Obsidian + repositorio Git.
-> Este arquivo e carregado automaticamente pelo Claude Code em toda sessao.
+Gestão de conhecimento pessoal. Arquivos `.md` com YAML frontmatter, wikilinks e tags. Linguagem: PT-BR.
 
-## Contexto
+## Workspace
 
-- **Raiz / Vault Obsidian**: `C:\LabCogKHS_CLI\`
-- **Branch principal**: `main`
-- **Plataforma**: Windows
-
-## Estrutura do Repositorio
+Versão ativa: `0_LabCognitivo/`. Tudo fora disso é legado — não mexa.
 
 ```
-C:\LabCogKHS_CLI\
-├── CLAUDE.md                       # << ESTE ARQUIVO (contexto global)
-├── skills\                         # Skills reutilizaveis (API keys, ferramentas, instrucoes)
-├── 03_LabCog_02_2026\              # Versao atual de organizacao do LabCog
-│   ├── 02_GeradorAutomaticoManuais_3.0\  # Projeto ativo (tem seu proprio CLAUDE.md)
-│   │   ├── 01_Codigo_Atual\       # Codigo vivo (VBA, C#) -- tem CLAUDE.md
-│   │   ├── 02_Documentacao\       # Docs do sistema atual -- tem CLAUDE.md
-│   │   └── 80_Legado\             # Mapa do sistema antigo -- tem CLAUDE.md
-│   └── 99_AFAZERES\               # Tarefas: AFAZERES.md (pendentes) + FEITOS.md (concluidos)
-├── 999. Imagens\                   # Pasta compartilhada de imagens
-├── 04. Arquivos e Projetos\        # LEGADO
-├── 40_Personas\                    # LEGADO
-├── 25. Scripts\                    # LEGADO
-├── 30_Historico\                   # LEGADO
-└── 31_Historicos_Resumidos\        # LEGADO
+0_LabCognitivo/
+├── CHANGELOG.md
+├── 00_Organization/   # Índices de navegação (sem conteúdo denso)
+├── 01_Core/           # Conteúdo .md — estrutura PLANA, sem subpastas
+├── 02_Tools/          # Scripts (.py, .ps1, .json)
+└── 03_Memoria/        # Sessões transcritas
 ```
 
-## Regras Operacionais
+## 01_Core/ — Regras
 
-### Economia de Contexto
-- **NAO abra arquivos legados** sem solicitacao explicita do usuario.
-- **Conheca a existencia** das pastas legadas para referencia rapida.
-- Quando precisar de contexto historico, pergunte antes de explorar.
+- Sem subpastas. Nunca.
+- Nomeação: `NN_NomeCamelCase.md` (ID sequencial)
+- Classificação por tags YAML, não pelo nome
+- Próximo ID = maior existente + 1
+- Wikilinks com alias: [[NN_Arquivo|Nome legível]]
 
-### Hierarquia de CLAUDEs
-Cada CLAUDE.md cuida do seu escopo. NAO duplique informacao entre niveis.
-- **Este arquivo (raiz)**: mapa geral do vault, regras globais, convencoes.
-- **GAM CLAUDE**: arquitetura, fluxo de geracao, maquinas suportadas. NAO detalhar modulos ou planilhas.
-- **01_Codigo_Atual CLAUDE**: mapa dos modulos VBA e motor C#. Dono das tabelas de modulos.
-- **02_Documentacao CLAUDE**: orientacao minima. Docs detalhados vivem como .md proprios na pasta.
-- **80_Legado CLAUDE**: mapa do sistema antigo.
+## Protocolo de sessão
 
-### Pasta 999. Imagens
-- Caminho: `C:\LabCogKHS_CLI\999. Imagens\`
-- Nomenclatura sequencial: `00000. Descricao.png`, `00001. Descricao.png`, etc.
-- Usada para trocar imagens com o CLI (screenshots, diagramas, referencias).
-- Ao criar ou solicitar nova imagem, seguir a sequencia numerica existente.
+### Ao iniciar (nesta ordem)
+1. `git pull` — sincronize com o GitHub
+2. Leia `SOUL.md` (raiz)
+3. Leia `01_DiarioDeBordo.md`
+4. Pergunte ao usuário: criar novo log ou continuar um existente?
+5. Se novo: liste `01_Core/` para próximo ID, crie log (template: `01_TemplateLog.md`), registre no Diário
+6. Só então inicie o trabalho
 
-### Referencia: OpenClaw
-- Caminho: `04. Arquivos e Projetos\02. Incubadora_de_Projetos\05. ClawdBot_IA\02. OpenClaw\`
-- Tecnicas e ferramentas serao trazidas gradualmente, avaliadas uma por uma.
+### Firewall
+- Não leia arquivos antigos por conta própria. Economize tokens.
+- Use `01_DiarioDeBordo.md` como único índice.
+- Só leia outros arquivos se o usuário pedir.
 
-## Stack
+### Durante a sessão
+- Registre decisões no log da sessão.
 
-- **TypeScript** para agentes, automacoes e ferramentas relacionadas ao OpenClaw.
+### Ao encerrar
+- Atualize o log da sessão e faça `git add` + `commit` + `push`.
 
-## Convencoes
+## Tags YAML
 
-- Prefixos numericos em pastas para ordenacao: `01_`, `02_`, `03_`...
-- CLAUDE.md em subprojetos quando houver contexto especifico relevante.
-- Commits em portugues quando o contexto e PT-BR.
-- Nomes de pasta/arquivo sem espacos em projetos novos (usar `_`).
+Todo arquivo do Core precisa de frontmatter com tags. Tags são o único mecanismo de classificação.
+Consulte [[26_ListaCanonicaTags|Lista Canônica de Tags]] apenas quando precisar classificar um arquivo.
+
+## Ferramentas (`02_Tools/`)
+
+| Script | Função |
+|---|---|
+| `scan_core.py` | Estado do Core, próximo ID, arquivos por tag |
+| `transcrever_sessoes.py` | `.jsonl` -> `.md` em `03_Memoria/` |
+| `iniciar.ps1` | Launcher: venv + transcrição + Claude Code |
