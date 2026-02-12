@@ -1,7 +1,0 @@
-Preview_ID;IHM_ID;Path_Image_Asset;Tooltip_Texto
-101;1;assets/img/cl30_main.png;Tela Principal Clearline 3.0
-102;1;assets/img/cl30_modes.png;Menu de Seleção de Modos (Prod/Setup)
-103;1;assets/img/cl30_prod.png;Tela de Dados de Produção
-104;1;assets/img/cl30_alarm.png;Lista de Alarmes Ativos
-105;6;assets/img/op177_main.png;Tela Principal OP177 (Monocromática)
-106;6;assets/img/op177_keys.png;Teclas de Função F1-F8

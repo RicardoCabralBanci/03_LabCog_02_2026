@@ -1,0 +1,1 @@
+Álbum do [[Felipe Ret]] que me fez começar a curtir ouvir álbuns, logo em seguida veio o [[Abaixo de Zero  Hello Hell]], que não me identifiquei de cara mas acabei pegando o gosto. E lgoo em seguida o [[UM Quebrada Inteligente]]. Mas antes comecei a ouvir as m

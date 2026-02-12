@@ -1,0 +1,1 @@
+Fazia este trajeto durante a , e o fazia diariamente durante a [[Mauá]]. Não o fiz durante os 5 anos de curso, pois existiu  uma [[Pandemia]] durante, eu acredito, que nos 2 primeiros anos 

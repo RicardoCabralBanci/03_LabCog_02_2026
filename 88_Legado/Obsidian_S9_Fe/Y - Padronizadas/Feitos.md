@@ -1,0 +1,14 @@
+- Entregar a correção do TCC.
+	- Entregue, nem sei se deu tudo certo mas é isso
+- Enviar um requerimento sobre as matérias de sabado que não me inscrevi no começo de ano. Mas para isso preciso conversar com o Du para ver se realmente não serei efetivado, então devo não enviar o requerimento e reprovar nessas duas matérias. Caso seja efetivado, mando o requerimento e torço para que aceitem trocar as inscrições dessas matérias.
+	- Enviei dia [[13-12-2024]]
+- Pensar em uma desculpa para não ir para a confra da empresa amanhã
+	- Só falei a verdade, que precisei fazer a prova que o professor mudou o horário. [[15-12-2024]]
+- Conversar com o Marcelo Otávio e com o Madani sobre a situação que estou.
+	- Conversei com o Marcelo Otávio e para sexta as 19 tem 
+	- Não obtive respostas do Madani, mas vi que tirei as notas necessárias para passar de ano.
+- Coversar com o professor da prova de sexta feira que possuo 2 ao mesmo tempo.
+	- Já enviei o requerimento, remarquei a prova de economia, não cheguei a tempo e vim hoje dia [[12-12-2024]], para fazer a sub.
+- Ver porque a lente de contato não chegou. 
+	- Fui no oftalmo e peguei as lentes de contato
+

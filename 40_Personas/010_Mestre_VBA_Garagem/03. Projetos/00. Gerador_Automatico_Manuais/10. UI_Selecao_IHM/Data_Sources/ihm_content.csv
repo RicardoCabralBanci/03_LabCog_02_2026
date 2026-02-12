@@ -1,7 +1,0 @@
-Map_ID;IHM_ID;Capitulo_Alvo;Path_Template_Std;Path_Template_Var;Ordem_Insercao
-501;1;01. Interface;templates/v3/CL30_Interface.docx;;1
-502;1;02. Modos;templates/v3/CL30_Modos.docx;;2
-503;1;03. Operacao;templates/v3/CL30_Producao.docx;;3
-504;1;04. Falhas;templates/v3/CL30_Falhas.docx;;4
-601;6;01. Interface;templates/legacy/OP177_Interface.docx;;1
-602;6;04. Falhas;templates/legacy/OP177_Falhas.docx;;4

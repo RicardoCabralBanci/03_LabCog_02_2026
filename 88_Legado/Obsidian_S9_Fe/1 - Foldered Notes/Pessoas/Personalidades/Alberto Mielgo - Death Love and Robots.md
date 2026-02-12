@@ -1,0 +1,1 @@
+Artista? Designer Grafico que criou o EP de Death Love and Robots da mulher coberta de joias e ouro que matou os cavaleiros lá. 

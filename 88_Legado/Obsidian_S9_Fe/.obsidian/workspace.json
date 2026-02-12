@@ -1,0 +1,359 @@
+{
+  "main": {
+    "id": "988e1b751db29618",
+    "type": "split",
+    "children": [
+      {
+        "id": "6f13b6947dfaa063",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "aa73a9ff2291117f",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "ZZ - Imagens/Pasted image 20241214142430.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20241214142430"
+            }
+          },
+          {
+            "id": "4a745d09e5df6ed4",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "ZZ - Imagens/Pasted image 20241214150517.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20241214150517"
+            }
+          },
+          {
+            "id": "066319f31f26799e",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "ZZ - Imagens/Pasted image 20241214150954.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20241214150954"
+            }
+          },
+          {
+            "id": "066c7dcbbaf1bbc6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "6 - Main Notes/4. Investimento.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "4. Investimento"
+            }
+          },
+          {
+            "id": "e63afdb2070be37d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "6 - Main Notes/2. Socialmente bem.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "2. Socialmente bem"
+            }
+          },
+          {
+            "id": "c3bbe89f90f275a6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "6 - FastNotes/4. Investimento.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "4. Investimento"
+            }
+          },
+          {
+            "id": "575d5c6f459aaa86",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "13. AI Notes/1.1 Indice Mestre por Data Criação.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "1.1 Indice Mestre por Data Criação"
+            }
+          },
+          {
+            "id": "92e0aeaeac2802ff",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "13. AI Notes/0001.aaa.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "0001.aaa"
+            }
+          }
+        ],
+        "currentTab": 7
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "37ed445982719fc7",
+    "type": "split",
+    "children": [
+      {
+        "id": "93164e1663914779",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2090684981299ae8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "7af849a22d7fd56b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "cabeça",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2a1aa27eab1a0642",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 249.5
+  },
+  "right": {
+    "id": "35a73a18a5e35cf1",
+    "type": "split",
+    "children": [
+      {
+        "id": "1c7292a7c9122536",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e622f12e60fd1eff",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "1 - Rough Notes/Entretenimento/Música/Musicas/Untitled.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Untitled"
+            }
+          },
+          {
+            "id": "19be4cbfc61aef53",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "1 - Rough Notes/Entretenimento/Música/Musicas/Untitled.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Untitled"
+            }
+          },
+          {
+            "id": "2f366e52cc533ee3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "ca16a6b35ac6e403",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "1 - Rough Notes/Entretenimento/Música/Musicas/Untitled.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:New drawing": false
+    }
+  },
+  "active": "92e0aeaeac2802ff",
+  "lastOpenFiles": [
+    "13. AI Notes/00.1.md",
+    "13. AI Notes/1.2 Indice Mestre Organizado pela IA.md",
+    "13. AI Notes/0001.aaa.md",
+    "13. AI Notes/1.1 Indice Mestre por Data Criação.md",
+    "13. AI Notes/2.1 Projeto Investimento + IA.md",
+    "13. AI Notes/Resumo_IA_20250421_184726.md",
+    "7 - All Notes/Untitled.md",
+    "6 - FastNotes/Desconforto durante conversas.md",
+    "6 - FastNotes/Desconforto no Busão e no Metrô.md",
+    "Excalidraw/Drawing 2025-04-28 21.31.32.excalidraw.md",
+    "Y - Padronizadas/Afazeres, Feitos, Acomprares/ComprasUM.md",
+    "Y - Padronizadas/Compras.md",
+    "14. Prompts/1. Prompts Funcionalidades/1.Prompt_Indice_Organizado_IA.md",
+    "1 - Foldered Notes/Pessoas/Personalidades/Alberto Mielgo - Death Love and Robots.md",
+    "1 - Foldered Notes/Pessoas/Personalidades",
+    "14. Prompts/Untitled.md",
+    "14. Prompts/1. Prompts Funcionalidades",
+    "15. AI Notes (Manual)/Lab Cog AI V1/1. Mestre da Colaboração V1.md",
+    "15. AI Notes (Manual)/Lab Cog AI V1/772.4 Script Python - Chat em Arquivo Único com Persona v4.md",
+    "15. AI Notes (Manual)/Lab Cog AI V1/772.3 Script Python - Geração Índice Mestre Ordenado v23.md",
+    "18. Single File Conv/Conversa Com Jack.md",
+    "18. Single File Conv",
+    "15. AI Notes (Manual)/Lab Cog AI V1/772.2 Script Python - Processador de Arquivo Único com IA.md",
+    "15. AI Notes (Manual)/Lab Cog AI V1/772.1 Script Python - Chat Assíncrono com Persona v3.md",
+    "15. AI Notes (Manual)/Lab Cog AI V1/772.0 Script Python - Criação de Nota de Resumo v21.md",
+    "15. AI Notes (Manual)/Lab Cog AI V1/557.0 Estudo sobre n8n e Model Context Protocol (MCP).md",
+    "15. AI Notes (Manual)/Lab Cog AI V1/137.1 Prompt de Persona Capitão Jack Sparrow.md",
+    "15. AI Notes (Manual)/Lab Cog AI V1/137.0 Prompt para IA  Sugestão de Links (Estilo Zettelkasten).md",
+    "15. AI Notes (Manual)/Lab Cog AI V1/99.2 Pesquisa sobre formas de organizar as notas..md",
+    "15. AI Notes (Manual)/Lab Cog AI V1",
+    "16. Input/Untitled",
+    "14. Prompts/Untitled/Untitled",
+    "14. Prompts/2. Personalidades",
+    "14. Prompts",
+    "17. Output",
+    "16. Input",
+    "ZZ - Imagens/Pasted image 20241214163925.png",
+    "ZZ - Imagens/Pasted image 20241214163739.png",
+    "ZZ - Imagens/Pasted image 20241214163602.png",
+    "ZZ - Imagens/Pasted image 20241214153510.png",
+    "ZZ - Imagens/Pasted image 20241214151044.png",
+    "ZZ - Imagens/Pasted image 20241214151141.png",
+    "ZZ - Imagens/Pasted image 20241214151024.png",
+    "ZZ - Imagens/Pasted image 20241214151019.png",
+    "ZZ - Imagens/Pasted image 20241214150517.png",
+    "ZZ - Imagens/Pasted image 20241214150954.png"
+  ]
+}
