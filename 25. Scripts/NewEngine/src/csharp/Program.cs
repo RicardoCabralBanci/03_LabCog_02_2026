@@ -13,7 +13,10 @@ namespace WordStitcher
 {
     class Program
     {
-        // Mapa Geográfico das Máquinas (Mantido por compatibilidade)
+        // Estrutura para armazenar dados das tabelas dinâmicas
+        private static Dictionary<string, List<string[]>> TablesData = new Dictionary<string, List<string[]>>();
+
+        // Mapa Geográfico das Máquinas
         private static readonly Dictionary<string, (int Start, int End)> MachineRanges = new Dictionary<string, (int, int)>
         {
             { "BTR", (5, 138) }, { "GTR", (142, 271) }, { "DVD", (277, 440) },
@@ -23,7 +26,7 @@ namespace WordStitcher
 
         static void Main(string[] args)
         {
-            Console.WriteLine("--- NewEngine V2.1 (Two Worlds + Safe XML + Data Injection) ---");
+            Console.WriteLine("--- NewEngine V3.1 (Layout Restore + Pre-Process Tables) ---");
 
             if (args.Length < 1)
             {
@@ -32,61 +35,180 @@ namespace WordStitcher
             }
 
             string manifestPath = args[0];
-            string outputFileName = "Manual_Gerado.docx";
+            List<string> tempFilesCreated = new List<string>(); // Para limpeza no final
             
             try
             {
                 if (!File.Exists(manifestPath)) { ShowError("Manifesto nao encontrado: " + manifestPath); return; }
 
                 var result = ParseManifest(manifestPath);
-                var filesToProcess = FilterFilesByRange(result.Files, result.Metadata.ContainsKey("MACHINE_TYPE") ? result.Metadata["MACHINE_TYPE"] : "GENERIC");
 
-                if (filesToProcess.Count == 0) { ShowError("Nenhum arquivo valido."); return; }
+                string pOrder = result.Metadata.GetValueOrDefault("ORDER_NUMBER", "00000000");
+                string pMachine = result.Metadata.GetValueOrDefault("MACHINE_TYPE", "Machine");
+                
+                // [MODIFICADO] Placeholder AFAZER solicitado pelo usuário
+                string outputFileName = $"BA_{pOrder}_AFAZER_{pMachine}_PT.docx";
+                outputFileName = string.Join("", outputFileName.Split(Path.GetInvalidFileNameChars()));
+                
+                Console.WriteLine($"[CONFIG] Nome do Arquivo: {outputFileName}");
 
                 string fullOutputPath = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(manifestPath)), outputFileName);
-                
                 if (!IsFileReady(fullOutputPath)) { ShowError("O arquivo de saida esta aberto. Feche-o."); return; }
 
+                var filesToProcess = FilterFilesByRange(result.Files, pMachine);
+                if (filesToProcess.Count == 0) { ShowError("Nenhum arquivo valido."); return; }
+
+                // --- NOVO V3.1: Pré-Processamento de Tabelas ---
+                if (TablesData.Count > 0)
+                {
+                    Console.WriteLine("\n[TABELAS] Iniciando busca e preenchimento de tabelas...");
+                    filesToProcess = PreProcessFiles(filesToProcess, tempFilesCreated);
+                }
+
+                // --- Motor V2.1 Restaurado (StitchDocuments) ---
                 StitchDocuments(fullOutputPath, filesToProcess, result.Metadata);
 
-                Console.WriteLine("\n[SUCESSO] Manual gerado: " + fullOutputPath);
+                Console.WriteLine("\n[SUCESSO] Manual gerado com sucesso!");
+                Console.WriteLine($"[ARQUIVO] {fullOutputPath}");
             }
             catch (Exception ex)
             {
                 ShowError("Falha critica: " + ex.Message + "\nStack: " + ex.StackTrace);
             }
+            finally
+            {
+                // Limpeza de temporários
+                foreach (var tmp in tempFilesCreated)
+                {
+                    try { if (File.Exists(tmp)) File.Delete(tmp); } catch { }
+                }
+            }
 
-            // Saida controlada pelo usuario
-            Console.WriteLine("\nProcesso finalizado.");
-            Console.WriteLine("Pressione qualquer tecla para fechar...");
+            Console.WriteLine("\nProcesso finalizado. Pressione qualquer tecla para sair...");
             Console.ReadKey(true);
+        }
+
+        // --- LÓGICA DE PRÉ-PROCESSAMENTO (V3.1) ---
+        static List<string> PreProcessFiles(List<string> originalFiles, List<string> tempTracker)
+        {
+            var newFileList = new List<string>();
+            string tempDir = Path.GetTempPath();
+
+            foreach (var file in originalFiles)
+            {
+                bool modified = false;
+                string workingFile = file;
+                
+                try
+                {
+                    string tmpFile = Path.Combine(tempDir, "tmp_" + Guid.NewGuid() + ".docx");
+                    File.Copy(file, tmpFile, true);
+                    
+                    using (WordprocessingDocument doc = WordprocessingDocument.Open(tmpFile, true))
+                    {
+                        var body = doc.MainDocumentPart.Document.Body;
+                        var tables = body.Descendants<Table>().ToList();
+                        
+                        foreach (var tbl in tables)
+                        {
+                            var tblPr = tbl.GetFirstChild<TableProperties>();
+                            string title = tblPr?.TableCaption?.Val?.Value ?? tblPr?.TableDescription?.Val?.Value;
+
+                            if (!string.IsNullOrEmpty(title) && TablesData.ContainsKey(title))
+                            {
+                                Console.WriteLine($"  -> Tabela '{{title}}' encontrada em {Path.GetFileName(file)}. Preenchendo...");
+                                FillTable(tbl, TablesData[title]);
+                                modified = true;
+                            }
+                        }
+
+                        if (modified) doc.MainDocumentPart.Document.Save();
+                    }
+
+                    if (modified)
+                    {
+                        newFileList.Add(tmpFile);
+                        tempTracker.Add(tmpFile);
+                    }
+                    else
+                    {
+                        File.Delete(tmpFile); 
+                        newFileList.Add(file); 
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[AVISO] Falha ao processar {Path.GetFileName(file)}: {ex.Message}. Usando original.");
+                    newFileList.Add(file);
+                }
+            }
+            return newFileList;
+        }
+
+        static void FillTable(Table table, List<string[]> data)
+        {
+            var rows = table.Elements<TableRow>().ToList();
+            if (rows.Count < 1) return;
+
+            var headerRow = rows.First();
+            var templateRow = rows.Count > 1 ? rows[1] : rows[0];
+            TableRow rowMolde = (TableRow)templateRow.CloneNode(true);
+
+            int targetCols = data.Count > 0 ? data[0].Length : 0;
+            if (targetCols == 0) return;
+
+            var headerCells = headerRow.Elements<TableCell>().ToList();
+            if (headerCells.Count > targetCols)
+                for (int i = headerCells.Count - 1; i >= targetCols; i--) headerRow.RemoveChild(headerCells[i]);
+
+            foreach (var row in rows.Skip(1).ToList()) table.RemoveChild(row);
+
+            foreach (var rowData in data)
+            {
+                TableRow newRow = (TableRow)rowMolde.CloneNode(true);
+                var cells = newRow.Elements<TableCell>().ToList();
+
+                if (cells.Count > targetCols)
+                    for (int i = cells.Count - 1; i >= targetCols; i--) newRow.RemoveChild(cells[i]);
+
+                var finalCells = newRow.Elements<TableCell>().ToList();
+                for (int i = 0; i < finalCells.Count; i++)
+                {
+                    var cell = finalCells[i];
+                    string textValue = i < rowData.Length ? rowData[i] : "";
+
+                    var textElement = cell.Descendants<Text>().FirstOrDefault();
+                    if (textElement != null)
+                    {
+                        textElement.Text = textValue;
+                        foreach (var et in cell.Descendants<Text>().Skip(1).ToList()) et.Remove();
+                    }
+                    else
+                    {
+                        var p = cell.Elements<Paragraph>().FirstOrDefault() ?? cell.AppendChild(new Paragraph());
+                        var r = p.Elements<Run>().FirstOrDefault() ?? p.AppendChild(new Run());
+                        r.AppendChild(new Text(textValue));
+                    }
+                }
+                table.AppendChild(newRow);
+            }
         }
 
         static void StitchDocuments(string outputPath, List<string> inputFiles, Dictionary<string, string> metadata)
         {
-            Console.WriteLine("[INFO] Iniciando empilhamento Hibrido (Capa Isolada + Corpo Padronizado)...");
-            Console.WriteLine("[INFO] Saida: " + outputPath);
+            Console.WriteLine("[INFO] Iniciando empilhamento Hibrido (V2.1 Restore)...");
 
-            // --- 1. Captura layout do Manual Padrao ---
             string manualLayoutXml = null;
             try {
                 string templatePath = FindTemplate(inputFiles[0]);
                 if (templatePath != null && File.Exists(templatePath)) {
                     using (var doc = WordprocessingDocument.Open(templatePath, false)) {
                         var sectPr = doc.MainDocumentPart.Document.Body.Elements<SectionProperties>().LastOrDefault();
-                        if (sectPr != null)
-                        {
-                            manualLayoutXml = sectPr.OuterXml;
-                            Console.WriteLine("[CONFIG] Layout do 'manual.dotm' carregado.");
-                        }
+                        if (sectPr != null) manualLayoutXml = sectPr.OuterXml;
                     }
-                } else {
-                    Console.WriteLine("[AVISO] Template 'manual.dotm' nao foi localizado na arvore de diretorios.");
                 }
-            } catch { Console.WriteLine("[ERRO] Falha ao ler layout do manual.dotm."); }
+            } catch { }
 
-
-            // --- 2. Construcao do Documento ---
             if (File.Exists(outputPath)) File.Delete(outputPath);
             File.Copy(inputFiles[0], outputPath);
 
@@ -95,33 +217,25 @@ namespace WordStitcher
                 MainDocumentPart mainPart = mainDoc.MainDocumentPart;
                 var body = mainPart.Document.Body;
 
-                // --- CIRURGIA DE ISOLAMENTO (Destronar o layout original para isolar a Capa) ---
-                // Pegamos o layout que veio com o arquivo da Capa
                 var coverSectPr = body.Elements<SectionProperties>().LastOrDefault();
                 string coverSectXml = coverSectPr?.OuterXml;
-                
-                // IMPORTANTE: Removemos ele do final do Body para que nao conflite com o layout final
                 if (coverSectPr != null) coverSectPr.Remove();
 
                 for (int i = 1; i < inputFiles.Count; i++)
                 {
-                    Console.WriteLine(" [+] Anexando: " + inputFiles[i]);
+                    Console.WriteLine(" [+] Anexando: " + Path.GetFileName(inputFiles[i]));
                     Paragraph separator;
 
                     if (i == 1)
                     {
-                        // Criamos a muralha usando o DNA original da Capa
                         SectionProperties breakSectPr = !string.IsNullOrEmpty(coverSectXml) 
-                            ? new SectionProperties(coverSectXml) 
-                            : new SectionProperties();
+                            ? new SectionProperties(coverSectXml) : new SectionProperties();
                         
-                        // Forca ser uma quebra de secao NextPage
                         var sType = breakSectPr.GetFirstChild<SectionType>();
                         if (sType == null) breakSectPr.AppendChild(new SectionType() { Val = SectionMarkValues.NextPage });
                         else sType.Val = SectionMarkValues.NextPage;
 
                         separator = new Paragraph(new ParagraphProperties(breakSectPr));
-                        Console.WriteLine("     -> Capa isolada com seu DNA original.");
                     }
                     else
                     {
@@ -132,25 +246,15 @@ namespace WordStitcher
                     AppendViaAltChunk(mainPart, inputFiles[i], "AltChunkId" + i);
                 }
 
-                // --- 3. Aplicacao da Lei do Manual (Novo Rei do Corpo) ---
                 if (!string.IsNullOrEmpty(manualLayoutXml))
                 {
-                    var newSectPr = new SectionProperties(manualLayoutXml);
-                    body.AppendChild(newSectPr);
-                    Console.WriteLine("[CONFIG] Layout do Manual aplicado ao corpo.");
+                    body.AppendChild(new SectionProperties(manualLayoutXml));
                 }
 
-                // --- 4. Injeção de Metadados (Capa) ---
-                InjectMetadata(mainPart, metadata);
+                InjectMetadata(mainDoc, metadata);
 
-                // Update Fields (Corrigido para evitar erro de reatribuicao de RootElement)
                 var settingsPart = mainPart.DocumentSettingsPart ?? mainPart.AddNewPart<DocumentSettingsPart>();
-                
-                if (settingsPart.Settings == null)
-                {
-                    settingsPart.Settings = new Settings();
-                }
-
+                if (settingsPart.Settings == null) settingsPart.Settings = new Settings();
                 if (settingsPart.Settings.GetFirstChild<UpdateFieldsOnOpen>() == null)
                     settingsPart.Settings.Append(new UpdateFieldsOnOpen() { Val = true });
 
@@ -158,145 +262,93 @@ namespace WordStitcher
             }
         }
 
-        static void InjectMetadata(MainDocumentPart mainPart, Dictionary<string, string> metadata)
+        static void InjectMetadata(WordprocessingDocument mainDoc, Dictionary<string, string> metadata)
         {
-            Console.WriteLine("[METADATA] Iniciando injecao de dados...");
+            var customPropsPart = mainDoc.CustomFilePropertiesPart;
+            if (customPropsPart == null) { customPropsPart = mainDoc.AddCustomFilePropertiesPart(); customPropsPart.Properties = new Properties(); }
 
-            var customPropsPart = mainPart.CustomFilePropertiesPart;
-            if (customPropsPart == null)
-            {
-                customPropsPart = mainPart.AddNewPart<CustomFilePropertiesPart>();
-                customPropsPart.Properties = new Properties();
-            }
-
-            // Mapeamento Chave do Manifesto -> Propriedade do Word
-            var map = new Dictionary<string, string>
-            {
-                { "MACHINE_TYPE", "MachineType" },
-                { "SAP_NUMBER", "MachineNumber" },
-                { "ORDER_NUMBER", "Order" },
-                { "REVISION", "Revision" },
-                { "YEAR", "MachineYear" }
+            var map = new Dictionary<string, string> { 
+                { "MACHINE_TYPE", "MachineType" }, { "SAP_NUMBER", "MachineNumber" },
+                { "ORDER_NUMBER", "Order" }, { "REVISION", "Revision" }, { "YEAR", "MachineYear" }
             };
 
-            foreach (var kvp in map)
-            {
-                if (metadata.ContainsKey(kvp.Key))
-                {
-                    UpsertProperty(customPropsPart.Properties, kvp.Value, metadata[kvp.Key]);
-                    Console.WriteLine($"  -> Set: {kvp.Value} = {metadata[kvp.Key]}");
-                }
+            foreach (var kvp in map) if (metadata.ContainsKey(kvp.Key)) UpsertProperty(customPropsPart.Properties, kvp.Value, metadata[kvp.Key]);
+
+            if (metadata.ContainsKey("MACHINE_NAME_FULL")) {
+                string fn = metadata["MACHINE_NAME_FULL"];
+                UpsertProperty(customPropsPart.Properties, "MachineType", fn);
+                UpsertProperty(customPropsPart.Properties, "MachineModel", fn);
             }
         }
 
         static void UpsertProperty(Properties props, string propName, string propValue)
         {
-            var prop = props.Where(p => ((CustomDocumentProperty)p).Name.Value == propName).FirstOrDefault();
-            
-            if (prop != null)
-            {
-                // Atualiza
-                var vpw = prop.FirstChild as VTLPWstr;
+            var prop = props.Cast<CustomDocumentProperty>().FirstOrDefault(p => p.Name.Value == propName);
+            if (prop != null) {
+                var vpw = prop.GetFirstChild<VTLPWSTR>();
                 if (vpw != null) vpw.Text = propValue;
-                else 
-                {
-                    prop.RemoveAllChildren(); // Limpa se for outro tipo
-                    prop.AppendChild(new VTLPWstr(propValue)); 
-                }
-            }
-            else
-            {
-                // Cria
-                var newProp = new CustomDocumentProperty() 
-                { 
-                    FormatId = "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}", // GUID padrao para Custom Props
-                    Name = propName
-                };
-                
-                // Calcula PID seguro (Max + 1)
-                int maxPid = 1;
-                foreach (CustomDocumentProperty p in props)
-                {
-                    if (p.Pid != null && p.Pid > maxPid) maxPid = p.Pid;
-                }
-                newProp.Pid = maxPid + 1;
-
-                newProp.AppendChild(new VTLPWstr(propValue));
+                else { prop.RemoveAllChildren(); prop.AppendChild(new VTLPWSTR(propValue)); }
+            } else {
+                var newProp = new CustomDocumentProperty { FormatId = "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}", Name = propName };
+                int maxPid = props.Cast<CustomDocumentProperty>().Select(p => p.PropertyId?.Value ?? 1).DefaultIfEmpty(1).Max();
+                newProp.PropertyId = maxPid + 1;
+                newProp.AppendChild(new VTLPWSTR(propValue));
                 props.AppendChild(newProp);
             }
         }
-
-        // --- Helpers ---
 
         static string FindTemplate(string refFile)
         {
             string startDir = Path.GetDirectoryName(Path.GetFullPath(refFile));
             DirectoryInfo dir = new DirectoryInfo(startDir);
-            
-            Console.WriteLine("[BUSCA] Procurando 'manual.dotm' a partir de: " + startDir);
-
             while (dir != null) {
-                string templatePath = Path.Combine(dir.FullName, "manual.dotm");
-                Console.WriteLine("  [?] Tentando: " + templatePath);
-                
-                if (File.Exists(templatePath)) {
-                    Console.WriteLine("  [!] SUCESSO: Encontrado em " + templatePath);
-                    return templatePath;
-                }
-
-                // Se chegamos na raiz do projeto (Config_BA), paramos de subir
+                string tp = Path.Combine(dir.FullName, "manual.dotm");
+                if (File.Exists(tp)) return tp;
                 if (dir.Name.Equals("Config_BA", StringComparison.OrdinalIgnoreCase)) break;
-                
                 dir = dir.Parent;
             }
-            
-            return null; // Retorna null se não achar nada
+            return null;
         }
 
         static void AppendViaAltChunk(MainDocumentPart mainPart, string filePath, string chunkId)
         {
-            AlternativeFormatImportPart chunk = mainPart.AddAlternativeFormatImportPart(
-                AlternativeFormatImportPartType.WordprocessingML, chunkId);
-            using (FileStream fileStream = File.Open(filePath, FileMode.Open, FileAccess.Read))
-            {
-                chunk.FeedData(fileStream);
-            }
-            AltChunk altChunk = new AltChunk { Id = chunkId };
-            mainPart.Document.Body.AppendChild(altChunk);
+            AlternativeFormatImportPart chunk = mainPart.AddAlternativeFormatImportPart(AlternativeFormatImportPartType.WordprocessingML, chunkId);
+            using (FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.Read)) chunk.FeedData(fs);
+            mainPart.Document.Body.AppendChild(new AltChunk { Id = chunkId });
         }
 
         static List<string> FilterFilesByRange(List<(int Line, string Path)> rawFiles, string machineType)
         {
-            // Logica simplificada de filtro (Mantida do original)
-            string normalizedType = machineType.Split(' ')[0].ToUpper().Trim();
-            if (!MachineRanges.ContainsKey(normalizedType)) return rawFiles.Select(f => f.Path).ToList();
-            var range = MachineRanges[normalizedType];
-            return rawFiles.Where(x => x.Line >= range.Start && x.Line <= range.End).Select(x => x.Path).ToList();
+            string type = machineType.Split(' ')[0].ToUpper().Trim();
+            if (!MachineRanges.ContainsKey(type)) return rawFiles.Select(f => f.Path).ToList();
+            var r = MachineRanges[type];
+            return rawFiles.Where(x => x.Line >= r.Start && x.Line <= r.End).Select(x => x.Path).ToList();
         }
 
         static (Dictionary<string, string> Metadata, List<(int Line, string Path)> Files) ParseManifest(string manifestPath)
         {
-            // Logica de parse (Mantida do original)
             var files = new List<(int, string)>();
             var metadata = new Dictionary<string, string>();
             string manifestDir = Path.GetDirectoryName(Path.GetFullPath(manifestPath));
-            string configBaRoot = Directory.GetParent(manifestDir)?.FullName ?? manifestDir;
-            if (Path.GetFileName(manifestDir).Equals("NewGeradorV2", StringComparison.OrdinalIgnoreCase))
-                configBaRoot = Directory.GetParent(manifestDir)?.FullName;
+            string configBaRoot = FindConfigBaRoot(manifestDir);
 
             foreach (var line in File.ReadAllLines(manifestPath, Encoding.UTF8))
             {
                 var parts = line.Split(';');
                 if (parts.Length < 3) continue;
-                string key = parts[1].Trim().ToUpper();
+                string cat = parts[0].Trim().ToUpper();
+                string key = parts[1].Trim();
                 string val = parts[2].Trim();
-                if (parts[0].Trim().ToUpper() == "META") metadata[key] = val;
-                else if (parts[0].Trim().ToUpper() == "FILE")
-                {
+
+                if (cat == "META") metadata[key.ToUpper()] = val;
+                else if (cat == "FILE") {
                     int ln = 0; int.TryParse(key, out ln);
-                    if (key == "SELECTED") ln = 0;
                     string path = SanitizePath(val, configBaRoot);
                     if (File.Exists(path)) files.Add((ln, path));
+                }
+                else if (cat == "TABLE_ROW") {
+                    if (!TablesData.ContainsKey(key)) TablesData[key] = new List<string[]>();
+                    TablesData[key].Add(parts.Skip(2).ToArray());
                 }
             }
             return (metadata, files);
@@ -305,13 +357,23 @@ namespace WordStitcher
         static string SanitizePath(string rawPath, string rootPath)
         {
             string clean = rawPath.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);
-            if (clean.Length > 1 && clean[1] == ':') clean = clean.Substring(2);
-            int index = clean.IndexOf("Config_BA", StringComparison.OrdinalIgnoreCase);
-            if (index != -1) clean = clean.Substring(index + 9);
-            return Path.Combine(rootPath, clean.TrimStart(Path.DirectorySeparatorChar));
+            if (clean.Contains(":")) clean = clean.Substring(clean.IndexOf("Config_BA", StringComparison.OrdinalIgnoreCase));
+            else if (clean.StartsWith("Config_BA", StringComparison.OrdinalIgnoreCase)) { } 
+            else clean = Path.Combine("Config_BA", clean);
+            return Path.Combine(Directory.GetParent(rootPath).FullName, clean);
+        }
+
+        static string FindConfigBaRoot(string startDir)
+        {
+            DirectoryInfo dir = new DirectoryInfo(startDir);
+            while (dir != null) {
+                if (dir.Name.Equals("Config_BA", StringComparison.OrdinalIgnoreCase)) return dir.FullName;
+                dir = dir.Parent;
+            }
+            return startDir;
         }
 
         static void ShowError(string msg) { Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("\n[ERRO] " + msg); Console.ResetColor(); }
-        static bool IsFileReady(string f) { if (!File.Exists(f)) return true; try { using (File.Open(f, FileMode.Open, FileAccess.Read, FileShare.None)) return true; } catch { return false; } }
+        static bool IsFileReady(string f) { try { if (File.Exists(f)) using (File.Open(f, FileMode.Open, FileAccess.Read, FileShare.None)) { } return true; } catch { return false; } }
     }
 }

@@ -1,3 +1,6 @@
 {
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "userIgnoreFilters": [
+    "04. Arquivos e Projetos/02. Incubadora_de_Projetos/05. ClawdBot_IA/"
+  ]
 }

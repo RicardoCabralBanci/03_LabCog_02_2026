@@ -10,7 +10,7 @@
 O sistema opera como um **orquestrador de arquivos Word controlado pelo Excel**. Não há banco de dados real; o Excel atua simultaneamente como Interface de Usuário (UI), Banco de Dados (DB) e Controlador de Lógica.
 
 ### Fluxo de Processamento
-1.  **Entrada de Dados (Excel):** O usuário seleciona opções (Checkboxes/Dropdowns) em diversas abas do Excel (`Planilha4`, `Planilha5`, etc.) e define quais capítulos serão incluídos na `Planilha3` ("Controle").
+1.  **Entrada de Dados (Excel):** O usuário seleciona opções (Pede que o usuário escreva X) em diversas abas do Excel (`Planilha4`, `Planilha5`, etc.) e define quais capítulos serão incluídos na `Planilha3` ("Controle").
 2.  **Disparo (Ribbon/VBA):** O usuário clica em botões na faixa de opções personalizada (Ribbon), que disparam macros específicas por máquina (ex: `BTR.Manual`, `CIP.Manual`).
 3.  **Montagem (Word VBA):**
     *   Um novo documento Word é criado baseado no template `manual.dotm`.
