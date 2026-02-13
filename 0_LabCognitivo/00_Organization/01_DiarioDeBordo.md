@@ -14,6 +14,7 @@ Registro cronológico das sessões de trabalho. Cada entrada documenta o que foi
 
 ## Histórico de Entradas
 
+*   **2026-02-13 — Knowledge Graph (sexta na KHS)**: [[34_LogSessao2026-02-13|Log da sessão]]. Criação de `04_Referencias/` para repositórios externos. Clone do [jeffpierce/memory-palace](https://github.com/jeffpierce/memory-palace). Análise técnica completa: arquitetura (memória ao lado do modelo), knowledge graph com arestas tipadas, busca semântica com centralidade, dual-memory pattern para código, auto-linking e handoff system. Documentado em [[35_ComoFuncionaMemoryPalace|Como Funciona Memory Palace]].
 *   **2026-02-11b — Segunda sessão do dia**: [[25_LogSessao2026-02-11b|Log da sessão]]. Continuação. Detectado conflito de ID duplicado (22).
 *   **2026-02-11 — Obsidian CLI/API e Reorganização de Repos**: [[24_LogSessao2026-02-11|Log da sessão]]. Clonagem do repo GitHub `03_LabCog_02_2026`. Renomeação de pasta local para `03_Projetos_KHS`. Exploração e testes do Obsidian CLI/REST API. Descoberta que v1.12 requer Catalyst. REST API funcionando perfeitamente. Criação de [[22_IdeiaObsidianCLI|Ideia Obsidian CLI]] e [[23_TesteAPICLI|nota de teste via API]].
 *   **2026-02-10 — Índices Ativos e Reorganização**: [[19_LogSessao2026-02-10|Log da sessão]]. Retomada da discussão sobre Índices Ativos (15_, 16_, 17_). Definição de próximos passos de implementação.

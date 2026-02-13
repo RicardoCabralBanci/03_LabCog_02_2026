@@ -27,10 +27,10 @@ Versão ativa: `0_LabCognitivo/`. Tudo fora disso é legado — não mexa.
 
 ### Ao iniciar (nesta ordem)
 1. `git pull` — sincronize com o GitHub
-2. Leia `SOUL.md` (raiz)
-3. Leia `01_DiarioDeBordo.md`
+2. Leia [[SOUL.md]] (raiz)
+3. Leia [[01_DiarioDeBordo.md]]
 4. Pergunte ao usuário: criar novo log ou continuar um existente?
-5. Se novo: liste `01_Core/` para próximo ID, crie log (template: `01_TemplateLog.md`), registre no Diário
+5. Se novo: liste `01_Core/` para próximo ID, crie log (template: [[01_TemplateLog.md]]), registre no Diário
 6. Só então inicie o trabalho
 
 ### Firewall
@@ -43,6 +43,7 @@ Versão ativa: `0_LabCognitivo/`. Tudo fora disso é legado — não mexa.
 
 ### Ao encerrar
 - Atualize o log da sessão e faça `git add` + `commit` + `push`.
+- "https://github.com/RicardoCabralBanci/03_LabCog_02_2026.git" - repositório atual 
 
 ## Tags YAML
 
