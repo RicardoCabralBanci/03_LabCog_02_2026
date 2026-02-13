@@ -1,90 +1,54 @@
-# Ideias de Ferramentas para o LabCog
+# Ideias & Ferramentas do LabCog
 
-Ferramentas e repos que podem ser úteis para o Laboratório Cognitivo.
+Índice central de todas as ideias de ferramentas, integrações e melhorias para o Laboratório Cognitivo.
+
+> [!important] Regras Gerais
+> Manter o arquivo conforme [[40_GuiaIndiceIdeias|Guia de Manutenção]].
 
 ---
 
-## Memória Persistente para Agentes
+## Memória Persistente & Knowledge Graph
 
-- [[28_MemoryPalace|Memory Palace]] — Local-first, leve, MCP nativo, 13 tools
-- [[29_Cognee|Cognee]] — Enterprise, Neo4j, 30+ fontes, 12k stars
-- [[30_ComparacaoMemoriaPersistente|Comparação entre os dois]]
+- [[28_MemoryPalace|Memory Palace]] — Local-first, leve, MCP nativo
+  - [[35_ComoFuncionaMemoryPalace|Análise técnica completa]]
+- [[29_Cognee|Cognee]] — Enterprise, Neo4j, 30+ fontes
+- [[30_ComparacaoMemoriaPersistente|Comparação Memory Palace vs Cognee]]
+- [[33_KnowledgeGraph|Knowledge Graph]] — Conceitos e aplicações
 
-## Ecossistema de Skills
+## Base de Dados
 
-- [[31_SkillsCLI|Skills CLI (find-skills)]] — Package manager de skills para agentes de IA ([skills.sh](https://skills.sh/))
+- [[08_IdeiaBaseDeDados|Base de Dados para o LabCog]]
+  - [[11_SchemaBaseDeDados|Schema do DB (evolução)]]
+  - [[12_DiscussaoBaseDeDados|Discussão e decisões]]
+  - [[13_SchemaFinalDB|Schema final simplificado]]
+  - [[17_AutomacaoRelacoes|Automação de relações via DB + Script]]
 
-## Sistema de Afazeres / Task Management
+## Automação & Agentes
 
-Necessidade: Rastreamento de tarefas pendentes, sessões incompletas e próximos passos de forma estruturada.
+- [[20_IdeiaAgenteTagger|Agente Especializado em Tags]]
+  - [[21_ObservacoesAgenteTagger|Caderno de Observações]]
+- [[31_SkillsCLI|Skills CLI (find-skills)]] — Package manager de skills
 
-### Opções Potenciais
+## Integrações & CLI
 
-**1. Taskwarrior + Timewarrior**
-- CLI-based task management
-- Tags, projetos, prioridades
-- Sincronização via servidor próprio
-- Tracking de tempo integrado
-- Plain text backend (fácil de parsear)
+- [[10_IdeiaCLITelegram|CLI da Claude e Gemini pelo Telegram]]
+- [[22_IdeiaObsidianCLI|Integração do Obsidian CLI]]
+- MCP com Excalidraw — Diagramas via MCP server
 
-**2. Org-mode (Emacs)**
-- Formato texto simples
-- Agenda com TODO/DONE states
-- Arquivos `.org` podem viver no `01_Core/`
-- Queries complexas via org-ql
-- Exportação para Markdown
+## Task Management
 
-**3. Todo.txt**
-- Formato extremamente simples: `(A) 2026-02-13 Tarefa com +projeto @contexto`
-- Dezenas de clientes (CLI, mobile, web)
-- Plain text, versionável via Git
-- Ideal para integração com scripts Python
+- [[39_PlanejamentoTodo|Planejamento Todo]] — Análise de opções (Taskwarrior, Todo.txt, custom)
 
-**4. TaskLite (Haskell CLI)**
-- Inspirado no Taskwarrior, mais moderno
-- SQLite backend
-- CLI + biblioteca Python via subprocess
-- Hooks para automação
+## Infraestrutura & Otimização
 
-**5. Sistema Próprio (Custom)**
-- Formato YAML frontmatter + Markdown
-- Arquivos `NN_Tarefa.md` no `01_Core/`
-- Tag `tarefa` + metadata `status`, `prioridade`, `prazo`
-- Scripts Python para dashboards
-- Já integrado com workflow existente
+- OpenClaw em Docker — Pesquisar viabilidade
+- Consumo de tokens na abertura — Investigar custo do startup do Claude Code
 
-### Proposta Inicial: Todo.txt + Script Python
+## Concluídas
 
-**Por quê:**
-- ✅ Formato simples (`todo.txt` na raiz)
-- ✅ Git-friendly (um arquivo, fácil de versionar)
-- ✅ CLI existente (`todo.sh`)
-- ✅ Parser Python trivial (regex básico)
-- ✅ Pode gerar relatórios Markdown para `00_Organization/`
+- ~~SOUL.md para o Claude~~ → Implementado (`SOUL.md` na raiz)
 
-**Estrutura:**
-```
-LabCogKHS_CLI/
-├── todo.txt                    # Arquivo central de tarefas
-├── done.txt                    # Histórico de tarefas completadas
-└── 0_LabCognitivo/
-    └── 02_Tools/
-        └── todo_report.py      # Gera relatório Markdown
-```
-
-**Formato exemplo:**
-```
-(A) 2026-02-13 Testar instalação local do Memory Palace +LabCog @estudo
-(B) 2026-02-13 Comparar Cognee vs Memory Palace +LabCog @pesquisa
-x 2026-02-13 2026-02-13 Clonar repo memory-palace +LabCog @setup
-```
-
-**Próximos passos:**
-- [ ] Decidir entre Todo.txt ou sistema próprio
-- [ ] Criar script de integração
-- [ ] Definir workflow (criar tarefas via CLI, visualizar em relatório Markdown)
-
-## Outros (pendentes de análise)
+## Pendentes de Análise
 
 - [clawdbot-supermemory](https://github.com/clawdbot-supermemory)
 - [qmd-skill](https://github.com/qmd-skill)
